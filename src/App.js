@@ -8,14 +8,18 @@ function App() {
 
   let [shoes, shoes변경] = useState(data);
 
+
+
   return (
     <div className="App">
       <Navbar bg="light" expand="lg">
         <Navbar.Brand href="#home">신발 쇼핑사이트</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
+
           {/* <Nav className="mr-auto"> */}
           <Nav className="ml-auto">
+
             <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#link">Link</Nav.Link>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
@@ -46,25 +50,29 @@ function App() {
 
       <div className="container">
         <div className="row">
-          <div className="col-md-4">
-            <img src="/images/shoes1.jpg" width="100%"></img>
-            <h4>{shoes[0].title}</h4>
-            <p>{shoes[0].content} &amp; {shoes[0].price}</p>
-          </div>
-          <div className="col-md-4">
-            <img src="/images/shoes2.jpg" width="100%"></img>
-            <h4>{shoes[1].title}</h4>
-            <p>{shoes[1].content} &amp; {shoes[1].price}</p>
-          </div>
-          <div className="col-md-4">
-            <img src="/images/shoes3.jpg" width="100%"></img>
-            <h4>{shoes[2].title}</h4>
-            <p>{shoes[2].content} &amp; {shoes[2].price}</p>
-          </div>
+          <ShoesList shoes={shoes}></ShoesList>
         </div>
       </div>
     </div>
   );
+}
+
+let ShoesList = (props) => {
+  return(
+    <>
+      {
+        props.shoes.map( (dat, index)=>{
+          return (
+            <div className="col-md-4" key={props.shoes[index].id}>
+              <img src={props.shoes[index].shoesImg} width="100%" alt={props.shoes[index].title} ></img>
+              <h4>{props.shoes[index].title}</h4>
+              <p>{props.shoes[index].content} &amp; {props.shoes[index].price}</p>
+            </div>
+          )
+        } )
+      }
+    </>
+  )
 }
 
 export default App;
