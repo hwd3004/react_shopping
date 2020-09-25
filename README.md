@@ -227,3 +227,22 @@ function App(){
     </div>
   )
 }
+
+---
+
+# 7. React Router 3: URL 파라미터로 상세페이지 100개 만들기
+
+(App.js)
+
+<Route path="/detail/:id">
+    <Detail shoes={shoes}></Detail>
+</Route>
+
+
+(Detail.js)
+
+import { useHistory, useParams } from 'react-router-dom';
+
+<h4 className="pt-5">{props.shoes[id].title}</h4>
+<p> {props.shoes[id].content} </p>
+<p> {props.shoes[id].price}원 </p>

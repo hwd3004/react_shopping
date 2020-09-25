@@ -61,12 +61,8 @@ function App() {
           </div>
         </Route>
 
-        <Route path="/detail">
-          <Detail></Detail>
-        </Route>
-
-        <Route path="/:id">
-          <div>아무거나 적음</div>
+        <Route path="/detail/:id">
+          <Detail shoes={shoes}></Detail>
         </Route>
 
       </Switch>
