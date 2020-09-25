@@ -177,3 +177,53 @@ import { Link, Route, Switch } from 'react-router-dom';
 
 리액트 라우터는 각각 페이지마다 다른 html 파일을 보여주는게 아님
 html 내부의 내용을 갈아치워서 다른 페이지처럼 흉내냄
+
+---
+
+# 6. React Router 2: Link, Switch, history 기능
+
+1. Link 태그로 페이지 이동 기능
+
+<Nav.Link> <Link to="/">Home</Link> </Nav.Link>
+<Nav.Link> <Link to="/detail">Detail</Link></Nav.Link>
+
+
+
+2. 뒤로 가기 버튼
+
+import { useHistory } from 'react-router-dom';
+
+let history = useHistory();
+
+<button className="btn btn-danger" onClick={()=>{history.goBack()}}>뒤로가기</button>
+
+
+history.push('/')
+
+/ 경로로 이동
+
+
+
+3. Switch 컴포넌트
+
+매치되는 <Route> 들을 전부 보여주지 말고 한번에 하나만 보여주세요~ 기능을 만들고 싶을 때 씀
+
+
+(App.js 파일)
+
+function App(){
+  return (
+    <div>
+      <나머지HTML/>
+      <Route exact path="/">
+        어쩌구
+      </Route>
+      <Route path="/detail">
+        <Detail/>
+      </Route>
+      <Route path="/:id">
+        <div>새로 만든 route입니다</div>
+      </Route>
+    </div>
+  )
+}
