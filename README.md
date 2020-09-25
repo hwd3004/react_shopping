@@ -107,3 +107,73 @@ import { name1, name2 } from './data.js';
 # 4. 숙제해설: 상품목록 Component화+반복문
 
 내가 한거랑 다른 방식이니 참고하자
+
+---
+
+# 5. React Router 1: 셋팅과 기본 라우팅
+
+페이지 나누기(라우팅)는 react-router-dom 라이브러리 이용
+
+npm install react-router-dom
+
+
+
+HashRouter vs BroswerRouter
+
+HashRouter - 라우팅 안전하게 할 수 있게 도와줌
+사이트 방문시 url 맨뒤에 /#/이 붙은채로 시작
+
+
+BrowserRouter - 라우팅을 리액트가 아니라 서버에게 요청할수 있어서 위험
+url 맨뒤에 /#/ 없음
+
+
+(index.js)
+
+import { HashRouter } from 'react-router-dom';
+
+ReactDOM.render(
+  <HashRouter>
+    <App />
+  </HashRouter>,
+  document.getElementById('root')
+);
+
+
+
+(App.js)
+
+import { Link, Route, Switch } from 'react-router-dom';
+
+
+원하는 위치에
+
+<Route path="/">
+    <div>메인페이지</div>
+</Route>
+
+<Route path="/detail">
+    <div>디테일페이지</div>
+</Route>
+
+<Route path="/어쩌구" component={컴포넌트이름}></Route>
+
+
+
+
+/detail 경로로 접색해도 /경로 내용이 보이는 이유
+
+/detail이라고 적으면 /라는 경로도 포함되어있음
+그래서 / 경로로 접속했다고 생각하고 메인지와,
+/detail 경로도 접속했다고 생각하고 상세페이지 둘 다 보여줌
+리액트 라우터가 원래 이렇게 동작함
+
+이걸 막으려면 / 경로에 exact 속성 부여하면 됨
+
+<Route exact path="/">
+    <div>메인페이지</div>
+</Route>
+
+
+리액트 라우터는 각각 페이지마다 다른 html 파일을 보여주는게 아님
+html 내부의 내용을 갈아치워서 다른 페이지처럼 흉내냄
