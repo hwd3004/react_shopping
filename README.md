@@ -290,3 +290,14 @@ let 제목 = styled.h4`
 `;
 
 <제목 색상={'red'}>상세페이지</제목>
+
+---
+
+# 9. 아니면 CSS 대신 SASS를 쓰자 (SASS 문법 10분 총정리)
+
+npm install node-sass
+
+sass에선 변수, 함수, 반복문, 연산자 사용 가능
+sass 문법으로 css 작성 가능
+브라우저는 sass 문법을 모르므로 sass를 다시 css로 컴파일해야함
+그래서 설치한게 node-sass

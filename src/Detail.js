@@ -3,6 +3,8 @@ import { useHistory, useParams } from "react-router-dom";
 
 import styled from "styled-components";
 
+import './Detail.scss'
+
 let 박스 = styled.div`
   padding: 20px;
 `;
@@ -25,8 +27,17 @@ let Detail = (props) => {
     <div className="container">
       <div className="row">
         <박스>
-          <제목 색상={'red'}>상세페이지</제목>
+          <제목 색상={'red'} className="detailPage">상세페이지</제목>
         </박스>
+
+        <div className="my-alert">
+            <p>재고가 얼마 남지 않았습니다.</p>
+        </div>
+        <div className="my-alert2">
+            <p>재고가 얼마 남지 않았습니다.</p>
+        </div>
+
+
         <div className="col-md-6">
           <img src={props.shoes[id].shoesImg} width="100%" />
         </div>
