@@ -78,3 +78,20 @@ col-md-4 - 모바일, 가로폭이 좁은 화면에서 세로로 정렬
 
 https://react-bootstrap.netlify.app/layout/grid/
 여기서 레이아웃 문서 참고하면서 해야됨.
+
+---
+
+# 3. 코드가 넘나 길어진다면 import / export 사용해보기
+
+export {} 문법
+여러개의 변수들을 내보낼때 dexport default 대신에
+
+(data.js 파일)
+
+let name1 = 'Kim';
+let name2 = 'Park';
+export { name1, name2 }
+
+(App.js 파일)
+
+import { name1, name2 } from './data.js';

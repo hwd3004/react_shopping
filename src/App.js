@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Navbar,Nav,NavDropdown,Button,Jumbotron } from "react-bootstrap";
 import './App.css'
 
+import data from './data.js'
+
 function App() {
+
+  let [shoes, shoes변경] = useState(data);
+
   return (
     <div className="App">
       <Navbar bg="light" expand="lg">
@@ -43,18 +48,18 @@ function App() {
         <div className="row">
           <div className="col-md-4">
             <img src="/images/shoes1.jpg" width="100%"></img>
-            <h4>상품설명</h4>
-            <p> 상품설명 &amp; 가격</p>
+            <h4>{shoes[0].title}</h4>
+            <p>{shoes[0].content} &amp; {shoes[0].price}</p>
           </div>
           <div className="col-md-4">
             <img src="/images/shoes2.jpg" width="100%"></img>
-            <h4>상품설명</h4>
-            <p> 상품설명 &amp; 가격</p>
+            <h4>{shoes[1].title}</h4>
+            <p>{shoes[1].content} &amp; {shoes[1].price}</p>
           </div>
           <div className="col-md-4">
             <img src="/images/shoes3.jpg" width="100%"></img>
-            <h4>상품설명</h4>
-            <p> 상품설명 &amp; 가격</p>
+            <h4>{shoes[2].title}</h4>
+            <p>{shoes[2].content} &amp; {shoes[2].price}</p>
           </div>
         </div>
       </div>
