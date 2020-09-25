@@ -246,3 +246,47 @@ import { useHistory, useParams } from 'react-router-dom';
 <h4 className="pt-5">{props.shoes[id].title}</h4>
 <p> {props.shoes[id].content} </p>
 <p> {props.shoes[id].price}원 </p>
+
+---
+
+# 8. styled-components를 이용한 class 없는 CSS 스타일링
+
+컴포넌트가 많은 경우 스타일링을 하다보면 불편함이 생기는데
+1. class 만들어놓은걸 까먹고 중복해서 또 만들거나
+2. 갑자기 다른 이상한 컴포넌트에 원하지않는 스타일이 적용되거나
+3. css 파일이 너무 길어져서 수정이 어렵거나
+이런 경우가 있음
+
+그래서 컴포넌트 제작할 때 스타일을 바로 입혀서 컴포넌트를 만들어버릴 수 있는데
+styled-components라는 인기 라이브러리를 설치하여 이용하면 된다
+호불호가 갈릴수 있음
+
+터미널에
+npm install styled-components
+
+
+(Detail.js)
+
+let 박스 = styled.div`
+  padding: 20px;
+`;
+
+let 제목 = styled.h4`
+  font-size: 25px;
+`;
+
+
+<박스>
+    <제목>상세페이지</제목>
+</박스>
+
+
+
+스타일 컴포넌트에 props 전달
+
+let 제목 = styled.h4`
+  font-size: 25px;
+  color : ${ props => props.색상 }
+`;
+
+<제목 색상={'red'}>상세페이지</제목>
