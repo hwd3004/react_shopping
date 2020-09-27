@@ -18,12 +18,16 @@ let 제목 = styled.h4`
 
 let Detail = (props) => {
   let [디스플레이, 디스플레이변경] = useState(false);
+  let [입력, 입력변경] = useState("");
+
   useEffect(() => {
     // let 타이머 = setTimeout(() => {}, 2000);
     // return () => {};
-
-    setTimeout(() => { 디스플레이변경(true) }, 2000);
-  });
+    let 타이머 = setTimeout(() => {
+      디스플레이변경(true);
+    }, 2000);
+    console.log("useEffect 실행됨");
+  }, [디스플레이]);
 
   let history = useHistory();
 
@@ -45,16 +49,18 @@ let Detail = (props) => {
         <div className="my-alert">
           <p>재고가 얼마 남지 않았습니다.</p>
         </div>
+        {입력}
+        <input
+          onChange={(event) => {
+            입력변경(event.target.value);
+          }}
+        ></input>
 
         {디스플레이 === false ? (
           <div className="my-alert2">
             <p>재고가 얼마 남지 않았습니다.</p>
           </div>
         ) : null}
-
-        {/* <div className="my-alert2">
-          <p>재고가 얼마 남지 않았습니다.</p>
-        </div> */}
 
         <div className="col-md-6">
           <img src={props.shoes[id].shoesImg} width="100%" />
