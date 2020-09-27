@@ -6,9 +6,16 @@ import Detail from './Detail.js';
 
 import { Link, Route, Switch } from 'react-router-dom';
 
+import axios from 'axios';
+
 function App() {
 
   let [shoes, shoes변경] = useState(data);
+
+
+  let [추가신발, 추가신발변경] = useState([]);
+
+  let [더보기, 더보기변경] = useState(false);
 
 
 
@@ -58,6 +65,24 @@ function App() {
             <div className="row">
               <ShoesList shoes={shoes}></ShoesList>
             </div>
+
+            <button className="btn btn-primary" onClick={ ()=>{
+              axios.get('https://codingapple1.github.io/shop/data2.json').then( (result)=>{
+                console.log(result.data[0].title);
+                추가신발변경(result.data);
+                console.log(추가신발)
+                더보기변경(true);
+                console.log(더보기)
+              } ).catch( ()=>{console.log('에러')} );
+            } }>더보기</button>
+
+            {
+              더보기 == true ? (
+                <div className="row">
+                  <추가신발리스트 추가신발={추가신발}></추가신발리스트>
+                </div>
+              ) : null
+            }
           </div>
         </Route>
 
@@ -84,6 +109,23 @@ let ShoesList = (props) => {
             </div>
           )
         } )
+      }
+    </>
+  )
+}
+
+let 추가신발리스트 = (props) => {
+  return (
+    <>
+      {
+        props.추가신발.map((dat, index) => {
+          return (
+            <div className="col-md-4" key={props.추가신발.[index].id}>
+              <h4>{props.추가신발[index].title}</h4>
+              <p>{props.추가신발[index].content} &amp; {props.추가신발[index].price} </p>
+            </div>
+          )
+        })
       }
     </>
   )

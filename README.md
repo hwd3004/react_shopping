@@ -356,3 +356,39 @@ useEffect( () => {
 
     return ()=>{ clearTimeou( 타이머 ) }
 })
+
+---
+
+# 12. 리액트에서의 Ajax 요청방법 & Ajax는 무엇인가
+
+1. Ajax
+서버에 새로고침없이 요청을 할 수 있게 도와줌
+
+2. 요청 종류
+Get 요청 : 주소창에 URL 때려박는 요청, 특정 페이지 / 자료 읽기
+Post 요청 : 서버로 중요 정보 전달
+
+3. Ajax 사용법
+jQuery 설치해서 $.ajax() 쓰기
+axios 설치해서 axios.get() 쓰기
+자바스크립트 fetch() 쓰기
+
+axios가 좋음
+
+npm install axios
+
+
+
+<button className="btn btn-primary" onClick={ ()=>{
+    axios.get('https://codingapple1.github.io/shop/data2.json').then(콜백함수).catch(콜백함수);
+} }>더보기</button>
+
+axios.get(데이터 요청할 url)
+성공하면 .then(실행할 코드)
+실패하면 .catch(실행할 코드)
+
+
+요청한 자료는 json인데, 서버랑 데이터 주고 받을때 오브젝트 자료형은 주고 받을 수 없다.
+오브젝트를 다 따옴표를 쳐서 문자형으로 만들어야한다
+근데 콘솔로그로 출력해보면 오브젝트로 나오는데, axios가 json을 오브젝트로 알아서 바꿔준다.
+자바스크립트 fetch를 이용하면 바꿔주지않는다.
