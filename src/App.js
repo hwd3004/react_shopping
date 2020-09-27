@@ -12,6 +12,8 @@ function App() {
 
   let [shoes, shoes변경] = useState(data);
 
+  let [재고, 재고변경] = useState([10, 11, 12]);
+
 
   let [추가신발, 추가신발변경] = useState([]);
 
@@ -99,7 +101,7 @@ function App() {
         </Route>
 
         <Route path="/detail/:id">
-          <Detail shoes={shoes}></Detail>
+          <Detail shoes={shoes} 재고={재고} 재고변경={재고변경}></Detail>
         </Route>
 
       </Switch>
@@ -132,7 +134,7 @@ let 추가신발리스트 = (props) => {
       {
         props.추가신발.map((dat, index) => {
           return (
-            <div className="col-md-4" key={props.추가신발.[index].id}>
+            <div className="col-md-4" key={props.추가신발[index].id}>
               <h4>{props.추가신발[index].title}</h4>
               <p>{props.추가신발[index].content} &amp; {props.추가신발[index].price} </p>
             </div>

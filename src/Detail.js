@@ -71,7 +71,20 @@ let Detail = (props) => {
           <h4 className="pt-5">{props.shoes[id].title}</h4>
           <p> {props.shoes[id].content} </p>
           <p> {props.shoes[id].price}원 </p>
-          <button className="btn btn-danger">주문하기</button>
+
+          <Info 재고={props.재고}></Info>
+
+          <button className="btn btn-danger" onClick={ (event)=>{
+            //   props.재고변경( [9, 11, 12] );
+            //   console.log(props.재고[id]-1)
+
+              let 바뀔재고 = [...props.재고]
+              console.log(바뀔재고[id])
+              바뀔재고[id] -= 1
+              props.재고변경(바뀔재고)
+              
+              return false;
+            } }>주문하기</button>
           <button
             className="btn btn-danger"
             onClick={() => {
@@ -85,5 +98,12 @@ let Detail = (props) => {
     </div>
   );
 };
+
+let Info = (props) => {
+    let { id } = useParams();
+    return (
+        <p> 재고 : {props.재고[id]} </p>
+    )
+}
 
 export default Detail;
