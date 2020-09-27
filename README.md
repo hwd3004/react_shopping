@@ -301,3 +301,7 @@ sass에선 변수, 함수, 반복문, 연산자 사용 가능
 sass 문법으로 css 작성 가능
 브라우저는 sass 문법을 모르므로 sass를 다시 css로 컴파일해야함
 그래서 설치한게 node-sass
+
+---
+
+# 10. Lifecycle Hook (옛날사람) useEffect (요즘사람)
