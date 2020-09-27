@@ -334,7 +334,7 @@ useEffect( () => {
     실행할 코드
 }, [] )
 
-비우면 그 페이지 등장시 한번만 실행하고 끝남
+비우면 한번만 실행하고 끝남
 
 
 
@@ -392,3 +392,39 @@ axios.get(데이터 요청할 url)
 오브젝트를 다 따옴표를 쳐서 문자형으로 만들어야한다
 근데 콘솔로그로 출력해보면 오브젝트로 나오는데, axios가 json을 오브젝트로 알아서 바꿔준다.
 자바스크립트 fetch를 이용하면 바꿔주지않는다.
+
+---
+
+# 13. 리액트에서의 Ajax 요청방법 2 & 숙제풀이
+
+1. 나는 새 state를 만들어서 했는데, 강의영상에서는 기존 shoes state에 추가하는 방법으로 하였다.
+
+<button className="btn btn-primary" onClick={ ()=>{
+    axios.get('https://codingapple1.github.io/shop/data2.json').then( (result)=>{
+    shoes변경( [...shoes, ...result.data] )
+    // ...으로 카피하는 습관을 가지자
+    // shoes와 result.data는 각각 [{}, {}, {}] 형식의 데이터이다
+    // [...shoes, ...result.data] 이 코드의 의미는
+    // [{}, {}, {}, {}, {}, {}] 이다
+    } ).catch( ()=>{console.log('에러')} );
+} }>더보기</button>
+
+
+
+
+2. 서버에 데이터를 보내고 싶을때 post 요청하는 법
+axios.post('서버url', {id : '아이디', pw : '비번'}).then( (result)=>{} ).catch( ()=>{} )
+보내고 싶은 주소, 보내고 싶은 데이터
+
+
+3. 컴포넌트 로드시 ajax 데이터를 가져오고 싶을땐
+
+let 컴포넌트명 => (props 필요하면 props 쓰고) {
+    필요한 변수와 state들 쓰고
+
+    useEffect( ()=>{
+        axios.get();
+    }, [] )
+}
+
+[]를 써서 업데이트 시엔 실행 안되게.

@@ -23,6 +23,7 @@ let Detail = (props) => {
   useEffect(() => {
     // let 타이머 = setTimeout(() => {}, 2000);
     // return () => {};
+
     let 타이머 = setTimeout(() => {
       디스플레이변경(true);
     }, 2000);

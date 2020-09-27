@@ -67,22 +67,34 @@ function App() {
             </div>
 
             <button className="btn btn-primary" onClick={ ()=>{
+
+              // 로딩중이라는 ui 
+              
+              // 서버에 데이터를 보내고 싶을때 post 요청하는 법
+              // axios.post('서버url', {id : '아이디', pw : '비번'}).then()
+
               axios.get('https://codingapple1.github.io/shop/data2.json').then( (result)=>{
-                console.log(result.data[0].title);
-                추가신발변경(result.data);
-                console.log(추가신발)
-                더보기변경(true);
-                console.log(더보기)
-              } ).catch( ()=>{console.log('에러')} );
+
+                // 로딩중이라는 ui 삭제
+
+                shoes변경( [...shoes, ...result.data] )
+                // ...으로 카피하는 습관을 가지자
+                // shoes와 result.data는 각각 [{}, {}, {}] 형식의 데이터이다
+                // [...shoes, ...result.data] 이 코드의 의미는
+                // [{}, {}, {}, {}, {}, {}] 이다
+              } ).catch( ()=>{
+                // 로딩중이라는 ui 삭제
+                console.log('에러');
+              } );
             } }>더보기</button>
 
-            {
+            {/* {
               더보기 == true ? (
                 <div className="row">
                   <추가신발리스트 추가신발={추가신발}></추가신발리스트>
                 </div>
               ) : null
-            }
+            } */}
           </div>
         </Route>
 
