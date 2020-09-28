@@ -549,3 +549,17 @@ props 쓰기 싫어서. props 없이 모든 컴포넌트가 state 갖다쓰기 �
 3. createStore를 import 해온 다음, 사용법에 의해 state를 만들어 let store라는 변수에 저장
 4. <Provider store={store}> 이렇게 store를 등록하면,
    Provider로 감싼 컴포넌트는 전부 store 안에 있던 값을 props 없이 공유 가능하다.
+
+---
+
+# 18. 세계최고로 쉬운 Redux 2 : reducer / dispatch로 데이터 수정하는 법
+
+Redux 쓰는 이유 - state 데이터 관리 기능
+
+reducer는 별거 아니고 그냥 수정된 state를 퉤 뱉는 함수
+
+
+소규모 사이트에선 리덕스는 필요없다. 배보다 배꼽이 더 크다.
+대규모 사이트에선 데이터를 한 눈에, 한 곳에 관리할 수 있어서 쓴다.
+
+리덕슬르 쓰면 전문용어로 'state 관리가 용이하다'고 한다. 혹은 '상태관리가 용이하다'고 한다.
