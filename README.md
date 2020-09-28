@@ -527,3 +527,25 @@ wow는 프로그래머가 작명한것
 }
 
 애니메이션 동작 때 적용할 css
+
+---
+
+# 17. 세계최고로 쉬운 Redux 1 : props 싫으면 쓰세요
+
+import Table - export default 된거 가져오기
+import {Table} - Table이라는 변수/함수 가져오기
+
+
+npm install redux react-redux
+
+
+리덕스 쓰는 이유
+props 쓰기 싫어서. props 없이 모든 컴포넌트가 state 갖다쓰기 가능
+
+
+셋팅법
+1. index.js에서 <Provider>를 import 해온다
+2. state 값공유를 원하는 컴포넌트를 감싸면 된다
+3. createStore를 import 해온 다음, 사용법에 의해 state를 만들어 let store라는 변수에 저장
+4. <Provider store={store}> 이렇게 store를 등록하면,
+   Provider로 감싼 컴포넌트는 전부 store 안에 있던 값을 props 없이 공유 가능하다.

@@ -8,6 +8,7 @@ import { Link, Route, Switch } from 'react-router-dom';
 
 import axios from 'axios';
 import { useContext } from "react";
+import Cart from "./Cart.js";
 
 
 
@@ -110,6 +111,11 @@ function App() {
               ) : null
             } */}
           </div>
+        </Route>
+
+
+        <Route path="/cart">
+          <Cart></Cart>
         </Route>
 
 
