@@ -7,6 +7,11 @@ import Detail from './Detail.js';
 import { Link, Route, Switch } from 'react-router-dom';
 
 import axios from 'axios';
+import { useContext } from "react";
+
+
+
+export let 재고context = React.createContext();
 
 function App() {
 
@@ -63,10 +68,17 @@ function App() {
             </p>
           </Jumbotron>
 
+          
+
           <div className="container">
-            <div className="row">
-              <ShoesList shoes={shoes}></ShoesList>
-            </div>
+
+            <재고context.Provider value={재고}>
+
+              <div className="row">
+                <ShoesList shoes={shoes}></ShoesList>
+              </div>
+
+            </재고context.Provider>
 
             <button className="btn btn-primary" onClick={ ()=>{
 
@@ -100,9 +112,18 @@ function App() {
           </div>
         </Route>
 
-        <Route path="/detail/:id">
-          <Detail shoes={shoes} 재고={재고} 재고변경={재고변경}></Detail>
-        </Route>
+
+
+
+        <재고context.Provider value={재고}>
+
+          <Route path="/detail/:id">
+            <Detail shoes={shoes} 재고={재고} 재고변경={재고변경}></Detail>
+          </Route>
+
+        </재고context.Provider>
+
+
 
       </Switch>
       
@@ -111,6 +132,9 @@ function App() {
 }
 
 let ShoesList = (props) => {
+
+  let 재고 = useContext(재고context);
+
   return(
     <>
       {
@@ -120,11 +144,27 @@ let ShoesList = (props) => {
               <img src={props.shoes[index].shoesImg} width="100%" alt={props.shoes[index].title} ></img>
               <h4>{props.shoes[index].title}</h4>
               <p>{props.shoes[index].content} &amp; {props.shoes[index].price}</p>
+              <p>{재고[index]}</p>
+              {console.log(재고[index])}
+
+              <Test></Test>
+
             </div>
           )
         } )
       }
     </>
+  )
+}
+
+let Test = (props) => {
+  
+  let 재고 = useContext(재고context);
+
+  return (
+    <div>
+    <p>재고 : {재고}</p>
+    </div>
   )
 }
 

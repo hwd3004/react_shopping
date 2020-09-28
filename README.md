@@ -433,3 +433,49 @@ let 컴포넌트명 => (props 필요하면 props 쓰고) {
 
 # 14. Component를 3개 중첩해서 만들면 state 전달은 어떻게 하죠?
 
+---
+
+# 15. 컴포넌트 많을 때 props 쓰기 싫으면 Context API 쓰셈
+
+하위 컴포넌트들이 props 없이도 부모의 값을 사용 가능
+
+ 컴포넌트 안이 아닌, 바깥에 context 만들기
+
+(App.js)
+
+import {useContext} from 'react';
+
+let 재고context = React.createContext();
+
+function App(){
+
+    let [재고, 재고변경] = useState([10, 11, 12]);
+
+    return (
+        
+        <재고context.Provider value={재고}>
+            <SheosList>></ShoesList>
+        </재고context.Provider>
+    )
+}
+
+
+let ShoesList = () => {
+
+    let 재고 = useContext(재고context)
+
+    return (
+        <div>
+            <p>{재고}</p>
+            <Test></Test>
+        </div>
+    )
+}
+
+let Test = () => {
+    let 재고 = useContext(재고context);
+
+    return (
+        <p> 재고 : {재고} </p>
+    )
+}

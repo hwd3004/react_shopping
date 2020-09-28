@@ -1,11 +1,14 @@
 import React from "react";
 import { useState } from "react";
+import { useContext } from "react";
 import { useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
 import styled from "styled-components";
 
 import "./Detail.scss";
+
+import {재고context} from './App.js'
 
 let 박스 = styled.div`
   padding: 20px;
@@ -19,6 +22,8 @@ let 제목 = styled.h4`
 let Detail = (props) => {
   let [디스플레이, 디스플레이변경] = useState(false);
   let [입력, 입력변경] = useState("");
+
+  let 재고 = useContext(재고context);
 
   useEffect(() => {
     // let 타이머 = setTimeout(() => {}, 2000);
