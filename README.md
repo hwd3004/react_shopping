@@ -479,3 +479,51 @@ let Test = () => {
         <p> 재고 : {재고} </p>
     )
 }
+
+---
+
+# 16. Tab 만들기와 리액트에서의 애니메이션 (react-transition-group)
+
+npm install react-transition-group
+
+import { CSSTransition } from 'react-transition-group';
+
+<CSSTransition>
+    <TabContent 누른탭={누른탭}></TabContent>
+</CSSTransition>
+
+애니메이션 주고 싶은 곳에 <CSSTransition>으로 감싸기
+
+
+
+사용하는 클래스는 3개
+
+<CSSTransition in={} classNames="" timeout={}>
+
+
+(Detail.js)
+
+<CSSTransition in={true} classNames="wow" timeout={500}>
+    <TabContent 누른탭={누른탭}></TabContent>
+</CSSTransition>
+
+wow는 프로그래머가 작명한것
+
+
+
+(Detail.scss)
+
+.wow-enter {
+    
+}
+
+애니메이션 시작 때 적용할 css
+
+
+
+
+.wow-enter-active {
+    
+}
+
+애니메이션 동작 때 적용할 css
