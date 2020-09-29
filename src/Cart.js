@@ -25,8 +25,8 @@ let Cart = (props) => {
                           <td> {dat.name} </td>
                           <td> {dat.quan} </td>
                           <td>
-                              <button onClick={()=>{ props.dispatch({ type: '수량증가' }) }}>+</button>
-                              <button onClick={()=>{ props.dispatch({ type: '수량감소' }) }}>-</button>
+                              <button onClick={()=>{ props.dispatch({ type: '수량증가', 상품번호 : dat.id }) }}>+</button>
+                              <button onClick={()=>{ props.dispatch({ type: '수량감소', 상품번호 : dat.id }) }}>-</button>
                           </td>
                       </tr>
                   )

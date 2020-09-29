@@ -4,7 +4,7 @@ import './App.css';
 import data from './data.js';
 import Detail from './Detail.js';
 
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch, useHistory } from 'react-router-dom';
 
 import axios from 'axios';
 import { useContext } from "react";
@@ -140,13 +140,14 @@ function App() {
 let ShoesList = (props) => {
 
   let 재고 = useContext(재고context);
+  let history = useHistory();
 
   return(
     <>
       {
         props.shoes.map( (dat, index)=>{
           return (
-            <div className="col-md-4" key={props.shoes[index].id}>
+            <div className="col-md-4" key={props.shoes[index].id} onClick={()=>{history.push(`/detail/${props.shoes[index].id}`)}}>
               <img src={props.shoes[index].shoesImg} width="100%" alt={props.shoes[index].title} ></img>
               <h4>{props.shoes[index].title}</h4>
               <p>{props.shoes[index].content} &amp; {props.shoes[index].price}</p>

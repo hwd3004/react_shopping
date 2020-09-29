@@ -44,19 +44,27 @@ let reducer = (state = 기본state, 액션) => {
     // }
     // 스읍 안되네
 
-    copy.push(액션.payload);
+    let found = state.findIndex((a)=>{return a.id === 액션.payload.id})
     
-    return copy
+    if( found >= 0){
+      let copy = [...state];
+      copy[found].quan++;
+      return copy
+    } else {
+      let copy = [...state];
+      copy.push(액션.payload); 
+      return copy
+    }
   }
   else if( 액션.type === '수량증가' ){
 
     let copy = [...state]
-    copy[0].quan++;
+    copy[액션.상품번호].quan++;
     return copy;
   }
   else if( 액션.type === '수량감소' ){
     let copy = [...state]
-    copy[0].quan--;
+    copy[액션.상품번호].quan--;
     return copy;
   }
   else {

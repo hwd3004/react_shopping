@@ -46,7 +46,7 @@ let Detail = (props) => {
   let { id } = useParams();
 
   let 찾은상품 = props.shoes.find((상품) => {
-    return 상품.id == id;
+    return 상품.id === id;
   });
 
   let [누른탭, 누른탭변경] = useState(0);
@@ -143,11 +143,11 @@ let TabContent = (props) => {
         props.스위치변경(true);
     });
 
-    if (props.누른탭 == 0){
+    if (props.누른탭 === 0){
         return <div>0</div>
-    } else if (props.누른탭 == 1) {
+    } else if (props.누른탭 === 1) {
         return <div>1</div>
-    } else if (props.누른탭 == 2) {
+    } else if (props.누른탭 === 2) {
         return <div>2</div>
     }
 }
