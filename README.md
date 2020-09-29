@@ -567,3 +567,7 @@ reducer는 별거 아니고 그냥 수정된 state를 퉤 뱉는 함수
 ---
 
 # 19. 세계 최고로 쉬운 Redux 3 : state와 reducer가 더 필요하면
+
+---
+
+# 20. 세계 최고로 쉬운 Redux 4 : dispatch할 때 데이터 실어보낼 수 있음

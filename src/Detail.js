@@ -14,6 +14,8 @@ import { 재고context } from "./App.js";
 
 import { CSSTransition } from 'react-transition-group';
 
+import { connect } from 'react-redux';
+
 let 박스 = styled.div`
   padding: 20px;
 `;
@@ -98,7 +100,9 @@ let Detail = (props) => {
               바뀔재고[id] -= 1;
               props.재고변경(바뀔재고);
 
-              return false;
+            //   props.dispatch({type : '항목추가', payload : {id: 2, name: '새로운상품', quan: 1}});
+            props.dispatch({type: '항목추가', payload : {id: props.shoes[id].id, name: props.shoes[id].title, quan: 1}})
+              history.push('/cart');
             }}
           >
             주문하기
@@ -153,4 +157,14 @@ let Info = (props) => {
   return <p> 재고 : {props.재고[id]} </p>;
 };
 
-export default Detail;
+let state를props화 = (state)=>{
+    console.log(state)
+    return {
+        state : state.reducer,
+        alert열렸니 : state.reducer2
+    }
+}
+
+export default connect(state를props화)(Detail)
+
+// export default Detail;

@@ -27,9 +27,28 @@ let 기본state = [
 ];
 
 let reducer = (state = 기본state, 액션) => {
+  console.log(액션.payload)
   console.log(state)
   console.log(액션)
-  if( 액션.type === '수량증가' ){
+
+  if(액션.type === '항목추가'){
+    let copy = [...state]
+    console.log('\n\ncopy')
+    console.log(copy)
+    console.log(액션.payload.name)
+
+    // if(copy.includes(액션.payload.name) == true){
+    //   console.log('asd')
+    // } else {
+    //   copy.push(액션.payload);  
+    // }
+    // 스읍 안되네
+
+    copy.push(액션.payload);
+    
+    return copy
+  }
+  else if( 액션.type === '수량증가' ){
 
     let copy = [...state]
     copy[0].quan++;
