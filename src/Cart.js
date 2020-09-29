@@ -3,6 +3,8 @@ import { Table } from "react-bootstrap";
 import { connect } from "react-redux";
 
 let Cart = (props) => {
+    console.log("\nCart props")
+    console.log(props)
   return (
     <div>
       <Table responsive>
@@ -32,18 +34,30 @@ let Cart = (props) => {
           }
         </tbody>
       </Table>
+      {
+        props.alert열렸니 === true ? (
+            <div className="my-alert2">
+                <p>신규할인 20%</p>
+                <button onClick={()=>{props.dispatch({ type: 'alert닫기' })}}>닫기</button>
+            </div>
+          ) : null
+      }
+      
     </div>
   );
 };
 
-let 함수명 = (state)=>{
+let state를props화 = (state)=>{
+    console.log('\n\nCart.js')
+    console.log(state)
     return {
         // 상품명 : state[0].name
-        state : state
+        state : state.reducer,
+        alert열렸니 : state.reducer2
     }
 }
 // state를 props화시킴
 
-export default connect(함수명)(Cart)
+export default connect(state를props화)(Cart)
 
 // export default Cart;
